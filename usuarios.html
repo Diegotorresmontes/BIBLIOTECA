@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+
+{% block content %}
+{% if session['username'] %}
+    <h2>Buscar Usuario</h2>
+    <form method="post" action="/buscar_usuario">
+        <input type="text" name="username" placeholder="Ingrese nombre del usuario" required>
+        <button type="submit">Buscar</button>
+    </form>
+
+    {% if resultado %}
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Nombre de Usuario</th>
+            <th>Email</th>
+        </tr>
+        {% for fila in resultado %}
+        <tr>
+            <td>{{ fila['username'] }}</td>
+            <td>{{ fila['email'] }}</td>
+        </tr>
+        {% endfor %}
+    {% else %}
+    <div>
+        {{ mensaje }}
+    </div>
+    {% endif %}
+{% else %}
+    Debe estar conectado para buscar un usuario.
+{% endif %}
+{% endblock %}</table></form>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>BIBLIOTECA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div>
+        <h1>BIBLIOTECA</h1>
+
+        <!-- Menú -->
+        <nav>
+            <a href="/autores">Listar autores</a>
+            <a href="/criticas">Criticas</a>
+            <a href="/libros">Libros</a>
+            <a href="/prestamos">Prestamos</a>
+            <a href="/usuarios">Usuarios</a>
+        </nav>
+
+        <hr>
+        {% if session['username'] %}
+            <p>Conectado como {{ username }} <a href="/logout">Logout</a></p>
+            <hr> 
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
